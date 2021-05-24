@@ -12,8 +12,9 @@ const LoginPage = ({ login, loading, isSignedIn, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    login(email, password);
+    if (email && password) {
+      login(email, password);
+    }
   };
 
   return (
