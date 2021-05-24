@@ -10,7 +10,7 @@ const Header = ({ isSignedIn, logout, user }) => {
         </Link>
 
         <ul id='nav-mobile' className='right'>
-          {isSignedIn ? (
+          {isSignedIn && user ? (
             <React.Fragment>
               <li style={{ marginRight: '1.6rem' }}>
                 <i style={{ marginRight: '0' }} className='material-icons left'>
