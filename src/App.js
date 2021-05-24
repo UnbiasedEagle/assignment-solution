@@ -17,6 +17,9 @@ function App() {
       const user = JSON.parse(localStorage.getItem('user'));
       setUser(user);
       setIsSignedIn(true);
+    } else {
+      setUser(null);
+      setIsSignedIn(false);
     }
   }, []);
 
@@ -33,11 +36,20 @@ function App() {
         { email, password },
         config
       );
-      localStorage.setItem('user', JSON.stringify(data.result));
-      setLoading(false);
-      setUser(data.result);
-      setIsSignedIn(true);
+      if (data.status === 200) {
+        localStorage.setItem('user', JSON.stringify(data.result));
+        setLoading(false);
+        setUser(data.result);
+        setIsSignedIn(true);
+      } else {
+        alert('Invalid Credentials');
+        setIsSignedIn(false);
+        setLoading(false);
+        setUser(null);
+        localStorage.removeItem('user');
+      }
     } catch (err) {
+      alert('Invalid Credentials');
       console.log(err.message);
       setIsSignedIn(false);
       setLoading(false);
