@@ -41,6 +41,7 @@ function App() {
       console.log(err.message);
       setIsSignedIn(false);
       setLoading(false);
+      setUser(null);
     }
   };
 
