@@ -42,6 +42,7 @@ function App() {
       setIsSignedIn(false);
       setLoading(false);
       setUser(null);
+      localStorage.removeItem('user');
     }
   };
 
